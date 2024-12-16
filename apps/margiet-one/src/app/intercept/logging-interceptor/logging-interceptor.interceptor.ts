@@ -1,6 +1,6 @@
 import { CallHandler, ExecutionContext, NestInterceptor } from '@nestjs/common';
 import { tap } from 'rxjs/operators';
-import { CONTEXT_TYPE } from '@/common/constant/handler';
+import { CONTEXT_TYPE } from '../../common/constant/handler';
 import { HttpLoggingStrategy } from './strategy/http-logging.strategy';
 import { LoggingInterceptStrategy } from './strategy/logging-intercept-strategy';
 import { GraphqlLoggingStrategy } from './strategy/graphql-logging.strategy';

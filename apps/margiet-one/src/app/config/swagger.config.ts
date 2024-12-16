@@ -1,7 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
-import { EnvName } from '@/common';
+import { EnvName } from '../common';
 
 export class SwaggerConfig {
   static setupOpenApi(

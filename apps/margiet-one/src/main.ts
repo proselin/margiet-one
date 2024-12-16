@@ -1,12 +1,12 @@
-import { createApp } from '@/config/create-app.config';
-import { AppModule } from '@/app.module';
 import { ConfigService } from '@nestjs/config';
-import { DEFAULT, EnvName } from '@/common';
-import { SwaggerConfig } from '@/config';
 import { Logger } from '@nestjs/common';
 
+import { createApp } from './app/config/create-app.config';
+import { DEFAULT, EnvName } from './app/common';
+import { SwaggerConfig } from './app/config';
+
 async function bootstrap() {
-  const app = await createApp(AppModule);
+  const app = await createApp();
   const configService = app.get(ConfigService);
   const port = +configService.get(EnvName.SERVER_PORT, DEFAULT.SERVER_PORT);
   const host = configService.get(EnvName.SERVER_HOST, DEFAULT.SERVER_HOST);

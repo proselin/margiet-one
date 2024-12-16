@@ -1,6 +1,6 @@
 import { LoggingInterceptStrategy } from './logging-intercept-strategy';
 import { ExecutionContext, Logger } from '@nestjs/common';
-import { CONTEXT_TYPE } from '@/common/constant/handler';
+import { CONTEXT_TYPE } from '../../../common/constant/handler';
 
 export class HttpLoggingStrategy implements LoggingInterceptStrategy {
   private readonly logger: Logger;

@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { NestMinioModule } from '@margiet-libs/minio';
-import { EnvName } from '@/common';
+import { MargietMinioModule } from '@margiet-one/marget-minio';
+import { EnvName } from '../../common';
+
 
 @Module({
   imports: [
-    NestMinioModule.registerAsync({
+    MargietMinioModule.registerAsync({
       isGlobal: true,
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {

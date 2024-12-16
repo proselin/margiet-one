@@ -1,4 +1,5 @@
 import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
+
 import { CommonEntity } from '../../common';
 import { DriverUploadHistory } from '../driver-upload-history';
 import { MinioUploadHistory } from '../minio-upload-history';

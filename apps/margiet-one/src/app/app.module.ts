@@ -1,10 +1,18 @@
 import { Module } from '@nestjs/common';
-import databaseConfig from '@/config/database/database.config';
 import { ConfigModule } from '@nestjs/config';
-import { DatabaseConfigModule, envValidation, LoggerConfigModule } from '@/config';
-import redisConfig from '@/config/redis.config';
-import { GraphQLConfigModule } from '@/config/graphql/graphql.config.module';
-import { FooModule } from '@/modules/foo/foo.module';
+
+import {
+  DatabaseConfigModule,
+  envValidation,
+  LoggerConfigModule,
+} from './config';
+import databaseConfig from './config/database/database.config';
+import redisConfig from './config/redis.config';
+import { GraphQLConfigModule } from './config/graphql/graphql.config.module';
+import { LoggingInterceptor, TimeoutInterceptor } from './intercept';
+import { CsrfMiddleware } from './middlewares/double-csrf/double-csrf.middleware';
+import { HealthModule } from './modules/health';
+import { FeatureModule } from './modules/feature.module';
 
 @Module({
   imports: [
@@ -15,8 +23,10 @@ import { FooModule } from '@/modules/foo/foo.module';
     }),
     LoggerConfigModule,
     DatabaseConfigModule,
-    FooModule,
-    GraphQLConfigModule
+    FeatureModule,
+    HealthModule,
+    GraphQLConfigModule,
   ],
+  providers: [TimeoutInterceptor, LoggingInterceptor, CsrfMiddleware],
 })
 export class AppModule {}

@@ -1,0 +1,19 @@
+{
+  "name": "@margiet-one/marget-minio",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "minio": "^8.0.1",
+    "tslib": "^2.3.0",
+    "@nestjs/common": "^10.0.0",
+    "rxjs": "^7.8.1"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true,
+  "types": "./src/index.d.ts"
+}

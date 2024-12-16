@@ -23,15 +23,18 @@ module.exports = [
             {
               sourceTag: 'scope:shared',
               onlyDependOnLibsWithTags: ['scope:shared'],
+            },
+            {
+              sourceTag: "type:feature",
+              onlyDependOnLibsWithTags: ['type:feature', 'type:adapter'],
+            },
+            {
+              sourceTag: "type:feature",
+              onlyDependOnLibsWithTags: ['type:feature', 'type:adapter'],
             }
           ],
         },
       ],
     },
-  },
-  {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    // Override or add rules here
-    rules: {},
   },
 ];

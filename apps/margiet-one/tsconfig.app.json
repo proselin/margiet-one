@@ -6,9 +6,6 @@
     "types": ["node"],
     "emitDecoratorMetadata": true,
     "target": "es2021",
-    "paths": {
-      "@/*": ["apps/margiet-one/src/app/*"]
-    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]

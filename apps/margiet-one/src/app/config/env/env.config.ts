@@ -1,5 +1,6 @@
 import Joi from 'joi';
-import { DEFAULT, EnvName, NODE_ENV } from '@/common';
+
+import { DEFAULT, EnvName, NODE_ENV } from '../../common';
 
 export function envValidation(config: Record<string, unknown>) {
   const appEnv = {
@@ -10,6 +11,8 @@ export function envValidation(config: Record<string, unknown>) {
     [EnvName.SERVER_HOST]: Joi.string().default(DEFAULT.SERVER_HOST),
     [EnvName.SERVER_PORT]: Joi.number().port().default(DEFAULT.SERVER_PORT),
     [EnvName.SERVER_PREFIX]: Joi.string().default(DEFAULT.SERVER_PREFIX),
+    [EnvName.SERVER_TIMEOUT]: Joi.number().default(DEFAULT.SERVER_TIMEOUT),
+    [EnvName.SERVER_NAME]: Joi.string().default(DEFAULT.SERVER_NAME)
   };
 
   const redisEnv = {

@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import {
   DriverUploadHistory,
   DriverUploadHistoryModule,
 } from '../driver-upload-history';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import {
   MinioUploadHistory,
   MinioUploadHistoryModule,

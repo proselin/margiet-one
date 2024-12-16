@@ -1,9 +1,12 @@
 export const enum EnvName {
+
   //=============== Server ==================
+  SERVER_NAME = "SERVER_NAME",
   NODE_ENV = 'NODE_ENV',
   SERVER_HOST = 'SERVER_HOST',
   SERVER_PORT = 'SERVER_PORT',
   SERVER_PREFIX = 'SERVER_PREFIX',
+  SERVER_TIMEOUT = 'SERVER_TIMEOUT',
 
   //=============== Redis ==================
   REDIS_HOST = 'REDIS_HOST',

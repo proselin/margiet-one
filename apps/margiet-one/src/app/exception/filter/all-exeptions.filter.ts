@@ -5,7 +5,8 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { CONTEXT_TYPE } from '@/common/constant/handler';
+
+import { CONTEXT_TYPE } from '../../common/constant/handler';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {

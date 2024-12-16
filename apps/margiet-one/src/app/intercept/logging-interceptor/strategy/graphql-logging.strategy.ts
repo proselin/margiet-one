@@ -1,7 +1,8 @@
-import { LoggingInterceptStrategy } from '@/intercept/logging-interceptor/strategy/logging-intercept-strategy';
 import { ExecutionContext, Logger } from '@nestjs/common';
 import { GraphQLResolveInfo } from 'graphql';
-import { CONTEXT_TYPE } from '@/common/constant/handler';
+
+import { LoggingInterceptStrategy } from './logging-intercept-strategy';
+import { CONTEXT_TYPE } from '../../../common/constant/handler';
 
 export class GraphqlLoggingStrategy implements LoggingInterceptStrategy {
   private readonly logger: Logger;
@@ -25,7 +26,7 @@ export class GraphqlLoggingStrategy implements LoggingInterceptStrategy {
 
     const info: GraphQLResolveInfo = this.context.getArgs()[3];
     this.handlerName = info?.fieldName ?? 'Unknown';
-    this.operationName = info?.operation?.name?.value ?? 'UnnamedOperation';
+    this.operationName = info?.operation.operation ?? 'UnnamedOperation';
     this.variables = this.context.getArgs()[1] ?? {}; // GraphQL variables
   }
 

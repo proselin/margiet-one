@@ -1,4 +1,5 @@
 import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
+
 import { CommonEntity } from '../../common';
 import { ChapterEntity } from '../chapter';
 import { ImageEntity } from '../image';

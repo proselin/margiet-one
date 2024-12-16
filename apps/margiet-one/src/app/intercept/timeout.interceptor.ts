@@ -4,6 +4,7 @@ import {
   NestInterceptor,
   RequestTimeoutException,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import {
   catchError,
   Observable,
@@ -12,11 +13,15 @@ import {
   TimeoutError,
 } from 'rxjs';
 
+import { EnvName } from '../common';
+
 @Injectable()
 export class TimeoutInterceptor implements NestInterceptor {
-  timeout = process.env['SERVER_TIMEOUT']
-    ? +process.env['SERVER_TIMEOUT']
-    : 60 * 5 * 60;
+
+  constructor(private configService: ConfigService) { }
+
+  timeout = this.configService.getOrThrow(EnvName.SERVER_TIMEOUT)
+
   intercept(_: unknown, next: CallHandler): Observable<unknown> {
     return next.handle().pipe(
       timeout(this.timeout),

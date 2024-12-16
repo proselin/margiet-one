@@ -13,8 +13,11 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {}
+    "baseUrl": "./",
+    "paths": {
+//      "@margiet-one/app/*": ["apps/margiet-one/src/app/*"],
+      "@margiet-one/marget-minio": ["libs/shared/margiet-minio/src/index"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
