@@ -3,7 +3,14 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run margiet-one:serve:development"
+    "start": "nx run margiet-one:serve:development",
+
+    "--------------------- TYPEORM ----------------------": "",
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "migration:run": "npm run typeorm migration:run -- -d ./apps/margiet-one/src/app/config/database/",
+    "migration:generate": "npm run typeorm -- -d ./src/config/typeorm.ts migration:generate ./src/migrations/$npm_config_name",
+    "migration:create": "npm run typeorm -- migration:create ./src/migrations/$npm_config_name",
+    "migration:revert": "npm run typeorm -- -d ./src/config/typeorm.ts migration:revert"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +27,7 @@
     "axios": "^1.6.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "compression": "^1.7.5",
     "cookie-parser": "^1.4.7",
     "csrf-csrf": "^3.1.0",
     "graphql": "^16.9.0",
@@ -54,6 +62,7 @@
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@types/compression": "^1.7.5",
     "@types/cookie-parser": "^1.4.8",
     "@types/jest": "^29.5.12",
     "@types/node": "~18.16.9",

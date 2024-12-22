@@ -6,13 +6,13 @@ import {
   envValidation,
   LoggerConfigModule,
 } from './config';
-import databaseConfig from './config/database/database.config';
+
 import redisConfig from './config/redis.config';
 import { GraphQLConfigModule } from './config/graphql/graphql.config.module';
 import { LoggingInterceptor, TimeoutInterceptor } from './intercept';
-import { CsrfMiddleware } from './middlewares/double-csrf/double-csrf.middleware';
-import { HealthModule } from './modules/health';
-import { FeatureModule } from './modules/feature.module';
+import { CsrfMiddleware } from './middlewares/double-csrf';
+import { DomainsModule } from './domains/domains.module';
+import databaseConfig from './config/database/database.config';
 
 @Module({
   imports: [
@@ -23,8 +23,7 @@ import { FeatureModule } from './modules/feature.module';
     }),
     LoggerConfigModule,
     DatabaseConfigModule,
-    FeatureModule,
-    HealthModule,
+    DomainsModule,
     GraphQLConfigModule,
   ],
   providers: [TimeoutInterceptor, LoggingInterceptor, CsrfMiddleware],

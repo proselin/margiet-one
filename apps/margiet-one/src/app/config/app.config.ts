@@ -1,8 +1,7 @@
-import { ValidationPipe, VersioningType } from '@nestjs/common';
+import { VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { LoggingInterceptor, TimeoutInterceptor } from '../intercept';
-import { AllExceptionsFilter } from '../exception';
 import { AppModule } from '../app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import helmet from 'helmet';
@@ -10,8 +9,9 @@ import { ConfigService } from '@nestjs/config';
 import { EnvName, NODE_ENV } from '../common';
 import cookieParser from 'cookie-parser';
 import { CsrfMiddleware } from '../middlewares/double-csrf';
+import compression from 'compression';
 
-export async function createApp() {
+export async function InitApp() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     bufferLogs: true,
   });
@@ -22,11 +22,11 @@ export async function createApp() {
 
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
 
-  app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
-
   app.useGlobalInterceptors(app.get(LoggingInterceptor));
-  // app.useGlobalInterceptors(new TransformInterceptor(new Reflector()));
+
   app.useGlobalInterceptors(app.get(TimeoutInterceptor));
+
+  app.setGlobalPrefix(config.get<string>(EnvName.SERVER_PREFIX));
 
   app.enableVersioning({
     type: VersioningType.URI,
@@ -61,13 +61,12 @@ export async function createApp() {
       },
     })
   );
-
   if (config.get(EnvName.NODE_ENV) === NODE_ENV.PRODUCTION) {
     app.use(app.get(CsrfMiddleware).use);
   }
+  app.use(compression());
 
   app.enableShutdownHooks();
 
-  app.useGlobalFilters(new AllExceptionsFilter());
   return app;
 }

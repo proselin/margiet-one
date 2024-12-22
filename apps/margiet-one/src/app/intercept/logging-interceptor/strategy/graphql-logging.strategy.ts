@@ -15,7 +15,9 @@ export class GraphqlLoggingStrategy implements LoggingInterceptStrategy {
   private readonly variables: Record<string, unknown>;
 
   constructor(private readonly context: ExecutionContext) {
-    this.logger = new Logger(`Intercept.GraphQLLogging.${context.getClass().name}`);
+    this.logger = new Logger(
+      `Intercept.GraphQLLogging.${context.getClass().name}`
+    );
     this.startTime = Date.now();
 
     const gqlContext = this.context.getArgs()[2]; // GraphQL context (args: [root, args, context, info])
@@ -36,20 +38,19 @@ export class GraphqlLoggingStrategy implements LoggingInterceptStrategy {
 
   logRequestStart(): void {
     this.logger.log(
-      `${this.prefix}Request started with variables: ${JSON.stringify(this.variables)}`
+      `${this.prefix}Request started with variables: ${JSON.stringify(
+        this.variables
+      )}`
     );
   }
 
   logRequestError(error: unknown): void {
-    this.logger.error(
-      `${this.prefix}Request error: `, error
-    );
+    this.logger.error(`${this.prefix}Request error: `, error);
   }
 
-  logRequestComplete(): void {
+  logRequestComplete(args) {
     const duration = Date.now() - this.startTime;
-    this.logger.log(
-      `${this.prefix}Request completed in ${duration} ms`
-    );
+    this.logger.log(`${this.prefix}Request completed in ${duration} ms`);
+    this.logger.warn(args);
   }
 }

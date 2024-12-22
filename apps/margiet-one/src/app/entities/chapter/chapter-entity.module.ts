@@ -7,4 +7,4 @@ import { ChapterEntity } from './chapter.entity';
   imports: [TypeOrmModule.forFeature([ChapterEntity])],
   exports: [TypeOrmModule],
 })
-export class ChapterModule {}
+export class ChapterEntityModule {}

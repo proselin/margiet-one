@@ -3,6 +3,7 @@ import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
 import { CommonEntity } from '../../common';
 import { ChapterEntity } from '../chapter';
 import { ImageEntity } from '../image';
+import { MaybePromise } from '../../common/types/maybe';
 
 @Entity('comic')
 export class ComicEntity extends CommonEntity {
@@ -59,10 +60,10 @@ export class ComicEntity extends CommonEntity {
   @OneToMany(() => ChapterEntity, (chapter) => chapter.comic, {
     lazy: true,
   })
-  chapters: Promise<ChapterEntity[]>;
+  chapters: MaybePromise<ChapterEntity[]>;
 
   @OneToOne(() => ImageEntity, {
     lazy: true,
   })
-  thumbImage: Promise<ImageEntity>;
+  thumbImage: MaybePromise<ImageEntity>;
 }

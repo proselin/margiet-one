@@ -7,4 +7,4 @@ import { ComicEntity } from './comic.entity';
   imports: [TypeOrmModule.forFeature([ComicEntity])],
   exports: [TypeOrmModule],
 })
-export class ComicModule {}
+export class ComicEntityModule {}

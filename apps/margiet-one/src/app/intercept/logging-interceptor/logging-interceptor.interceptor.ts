@@ -11,13 +11,15 @@ export class LoggingInterceptor implements NestInterceptor {
     loggerStrategy.logRequestStart();
     return next.handle().pipe(
       tap({
-        next: () => loggerStrategy.logRequestComplete(),
+        next: (arg) => loggerStrategy.logRequestComplete(arg),
         error: (err) => loggerStrategy.logRequestError(err),
       })
     );
   }
 
-  private getLoggerStrategy(context: ExecutionContext): LoggingInterceptStrategy {
+  private getLoggerStrategy(
+    context: ExecutionContext
+  ): LoggingInterceptStrategy {
     switch (context.getType<CONTEXT_TYPE>()) {
       case CONTEXT_TYPE.GraphQL:
         return new GraphqlLoggingStrategy(context);
@@ -28,5 +30,4 @@ export class LoggingInterceptor implements NestInterceptor {
         return new HttpLoggingStrategy(context);
     }
   }
-
 }

@@ -1,0 +1,91 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Chapter model"""
+type ChapterModel {
+  chapterNumber: String!
+  comic: ComicModel!
+  createdAt: DateTime!
+  id: Int!
+  images: [ImageModel!]!
+  position: Int!
+  sourceUrl: String!
+  title: String!
+  updatedAt: DateTime!
+}
+
+"""Comic Model"""
+type ComicModel {
+  author: String
+  chapterCount: Int!
+  chapters: [ChapterModel!]!
+  description: String
+  originUrl: String!
+  shouldRefresh: String
+  status: String
+  tags: [String!]!
+  thumbImage: ImageModel!
+  title: String!
+  urlHistory: [String!]!
+}
+
+input ComicPageableInput {
+  limit: Int = 10
+  page: Int = 1
+  sortBy: String
+  sortOrder: String = "ASC"
+}
+
+type ComicPageableResponse {
+  currentPage: Int!
+  items: [ComicModel!]!
+  limit: Int!
+  totalCount: Int!
+  totalPages: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DriverUploadHistoryModel {
+  createdAt: DateTime!
+  driverId: String!
+  fileName: String!
+  id: Int!
+  image: ImageModel
+  parentFolderId: String!
+  updatedAt: DateTime!
+  url: String!
+}
+
+"""Image model"""
+type ImageModel {
+  createdAt: DateTime!
+  driverUploadHistory: DriverUploadHistoryModel
+  id: Int!
+  minioUploadHistory: MinioUploadHistoryModel
+  originUrls: [String!]!
+  position: Int!
+  updatedAt: DateTime!
+  url: String!
+}
+
+type MinioUploadHistoryModel {
+  bucketName: String
+  createdAt: DateTime!
+  fileName: String
+  id: Int!
+  image: ImageModel
+  updatedAt: DateTime!
+  url: String
+}
+
+type Query {
+  chapterById(chapterId: Float!): ChapterModel!
+  chaptersByComicId(comicId: Float!): [ChapterModel!]!
+  pageableComics(pageable: ComicPageableInput!): ComicPageableResponse!
+  uptime: Float!
+}

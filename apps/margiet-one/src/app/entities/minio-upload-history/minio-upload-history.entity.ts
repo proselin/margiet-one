@@ -2,9 +2,10 @@ import { Column, Entity, OneToOne } from 'typeorm';
 
 import { CommonEntity } from '../../common';
 import { ImageEntity } from '../image';
+import { MaybePromise } from '../../common/types/maybe';
 
 @Entity('minio-upload-history')
-export class MinioUploadHistory extends CommonEntity {
+export class MinioUploadHistoryEntity extends CommonEntity {
   @Column({
     nullable: true,
   })
@@ -23,5 +24,5 @@ export class MinioUploadHistory extends CommonEntity {
   @OneToOne(() => ImageEntity, (img) => img.minioUploadHistory, {
     lazy: true,
   })
-  image: Promise<ImageEntity>;
+  image: MaybePromise<ImageEntity>;
 }

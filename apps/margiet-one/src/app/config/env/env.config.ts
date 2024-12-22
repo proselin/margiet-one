@@ -12,7 +12,7 @@ export function envValidation(config: Record<string, unknown>) {
     [EnvName.SERVER_PORT]: Joi.number().port().default(DEFAULT.SERVER_PORT),
     [EnvName.SERVER_PREFIX]: Joi.string().default(DEFAULT.SERVER_PREFIX),
     [EnvName.SERVER_TIMEOUT]: Joi.number().default(DEFAULT.SERVER_TIMEOUT),
-    [EnvName.SERVER_NAME]: Joi.string().default(DEFAULT.SERVER_NAME)
+    [EnvName.SERVER_NAME]: Joi.string().default(DEFAULT.SERVER_NAME),
   };
 
   const redisEnv = {
@@ -34,6 +34,10 @@ export function envValidation(config: Record<string, unknown>) {
     [EnvName.DATASOURCE_URI]: Joi.string().uri(),
   };
 
+  const swaggerEnv = {
+    [EnvName.SERVER_API_DOCUMENT_PREFIX]: Joi.string().default(DEFAULT.SERVER_API_DOCUMENT_PREFIX),
+  }
+
   const queueEnv = {};
 
   const { value, error } = Joi.object({
@@ -42,6 +46,7 @@ export function envValidation(config: Record<string, unknown>) {
     ...minioEnv,
     ...queueEnv,
     ...databaseEnv,
+    ...swaggerEnv
   })
     .unknown(true)
     .validate(config);
