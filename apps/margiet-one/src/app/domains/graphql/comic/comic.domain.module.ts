@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ComicEntityModule } from '../../entities';
+import { ComicEntityModule } from '../../../entities';
 import { comicProviders } from './comic.provider';
 
 @Module({

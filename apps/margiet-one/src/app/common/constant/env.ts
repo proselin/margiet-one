@@ -1,7 +1,6 @@
 export const enum EnvName {
-
   //=============== Server ==================
-  SERVER_NAME = "SERVER_NAME",
+  SERVER_NAME = 'SERVER_NAME',
   NODE_ENV = 'NODE_ENV',
   SERVER_HOST = 'SERVER_HOST',
   SERVER_PORT = 'SERVER_PORT',
@@ -27,4 +26,9 @@ export const enum EnvName {
 
   //=============== Swagger ==================
   SERVER_API_DOCUMENT_PREFIX = 'swagger',
+
+  //============== Cache =====================
+  CACHE_MAX = 'cache.max',
+  CACHE_TTL = 'cache.ttl',
+  CACHE_REFRESH_THRESHOLD = 'cache.refreshThreshold',
 }

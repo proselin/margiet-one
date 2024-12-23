@@ -1,5 +1,5 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { ChapterModel } from '../../models';
+import { ChapterModel } from '../../../graphql';
 import { ChapterService } from './services/chapter.service';
 
 @Resolver()

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { HealthModule } from './health';
-import { ChapterDomainModule } from './chapter/chapter.domain.module';
-import { ComicDomainModule } from './comic/comic.domain.module';
-import { ImageDomainModule } from './image/image.domain.module';
+import { HealthModule } from './graphql/health';
+import { ChapterDomainModule } from './graphql/chapter/chapter.domain.module';
+import { ComicDomainModule } from './graphql/comic/comic.domain.module';
+import { ImageDomainModule } from './graphql/image/image.domain.module';
 
 @Module({
   imports: [

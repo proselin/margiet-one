@@ -20,13 +20,16 @@ type ComicModel {
   author: String
   chapterCount: Int!
   chapters: [ChapterModel!]!
+  createdAt: DateTime!
   description: String
+  id: Int!
   originUrl: String!
   shouldRefresh: String
   status: String
   tags: [String!]!
   thumbImage: ImageModel!
   title: String!
+  updatedAt: DateTime!
   urlHistory: [String!]!
 }
 
@@ -66,7 +69,7 @@ type ImageModel {
   createdAt: DateTime!
   driverUploadHistory: DriverUploadHistoryModel
   id: Int!
-  minioUploadHistory: MinioUploadHistoryModel
+  minioUploadHistory: DriverUploadHistoryModel
   originUrls: [String!]!
   position: Int!
   updatedAt: DateTime!
@@ -86,6 +89,11 @@ type MinioUploadHistoryModel {
 type Query {
   chapterById(chapterId: Float!): ChapterModel!
   chaptersByComicId(comicId: Float!): [ChapterModel!]!
+  getImage(imageId: Float!): ImageModel!
+  imagesByChapter(
+    """Id of chapter want to get images"""
+    chapterId: Int!
+  ): [ImageModel!]!
   pageableComics(pageable: ComicPageableInput!): ComicPageableResponse!
   uptime: Float!
 }

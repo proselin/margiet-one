@@ -1,6 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 
-import { BaseEntityGqlModel } from '../../../common';
+import { BaseEntityGqlModel } from '../../common';
 import { MinioUploadHistoryModel } from './minio-upload-history.model';
 import { DriverUploadHistoryModel } from './driver-upload-history.model';
 

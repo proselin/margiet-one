@@ -35,18 +35,26 @@ export function envValidation(config: Record<string, unknown>) {
   };
 
   const swaggerEnv = {
-    [EnvName.SERVER_API_DOCUMENT_PREFIX]: Joi.string().default(DEFAULT.SERVER_API_DOCUMENT_PREFIX),
-  }
+    [EnvName.SERVER_API_DOCUMENT_PREFIX]: Joi.string().default(
+      DEFAULT.SERVER_API_DOCUMENT_PREFIX
+    ),
+  };
 
-  const queueEnv = {};
+  const cacheEnv = {
+    [EnvName.CACHE_MAX]: Joi.number().default(DEFAULT.CACHE_MAX),
+    [EnvName.CACHE_REFRESH_THRESHOLD]: Joi.any().default(
+      DEFAULT.CACHE_REFRESH_THRESHOLD
+    ),
+    [EnvName.CACHE_TTL]: Joi.any().default(DEFAULT.CACHE_TTL),
+  };
 
   const { value, error } = Joi.object({
     ...appEnv,
     ...redisEnv,
     ...minioEnv,
-    ...queueEnv,
+    ...cacheEnv,
     ...databaseEnv,
-    ...swaggerEnv
+    ...swaggerEnv,
   })
     .unknown(true)
     .validate(config);
