@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { BaseEntityGqlModel } from '../../../common';
+import { BaseEntityGqlModel } from '../../common';
 import { ComicModel } from './comic.model';
 import { ImageModel } from './image.model';
 

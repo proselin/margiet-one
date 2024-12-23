@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { ComicEntity } from '../../../entities';
-import { InjectRepository } from '@nestjs/typeorm';
-import { ComicPageableResponse } from '../responses';
 import { ComicPageableInput } from '../dtos/comic-pageable.input';
-import { Converter } from '../../../common/utils/helpers/converter';
+import { ComicPageableResponse } from '../responses';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ComicEntity } from '../../../../entities';
+import { ComicModel } from '../../../../graphql';
 
 interface IComicService {
   getComics(pageable: ComicPageableInput): Promise<ComicPageableResponse>;
@@ -36,9 +36,8 @@ export class ComicService implements IComicService {
 
     // Calculate total pages
     const totalPages = Math.ceil(totalCount / limit);
-
     return {
-      items: items.map((e) => Converter.convertComicEntityToComicModel(e)),
+      items: items as ComicModel[],
       totalCount,
       totalPages,
       currentPage: page,

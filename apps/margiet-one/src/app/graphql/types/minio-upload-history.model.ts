@@ -1,6 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { ImageModel } from './image.model';
-import { BaseEntityGqlModel } from '../../../common';
+import { BaseEntityGqlModel } from '../../common';
 
 @ObjectType()
 export class MinioUploadHistoryModel extends BaseEntityGqlModel {

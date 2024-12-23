@@ -1,6 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { IPageableResponse } from '../../../common';
-import { ComicModel } from '../../../models';
+import { IPageableResponse } from '../../../../common';
+import { ComicModel } from '../../../../graphql';
 
 @ObjectType()
 export class ComicPageableResponse implements IPageableResponse<ComicModel> {

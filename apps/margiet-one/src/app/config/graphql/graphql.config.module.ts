@@ -4,12 +4,10 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigService } from '@nestjs/config';
 import { GraphQLLogger } from './graphql-logger';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
-import { GraphqlLoggingPlugin } from './graphql.logging.plugin';
 
 type GraphQLModuleFactoryResult =
   | Promise<Omit<ApolloDriverConfig, 'driver'>>
   | Omit<ApolloDriverConfig, 'driver'>;
-
 
 @Module({
   imports: [
@@ -19,19 +17,18 @@ type GraphQLModuleFactoryResult =
       useFactory: (): GraphQLModuleFactoryResult => {
         return {
           playground: false,
-          autoSchemaFile: "apps/margiet-one/margiet-one.schema.graphql",
+          autoSchemaFile: 'apps/margiet-one/margiet-one.schema.graphql',
           plugins: [ApolloServerPluginLandingPageLocalDefault()],
           installSubscriptionHandlers: true,
           logger: new GraphQLLogger(),
           subscriptions: {
-            'graphql-ws': true
+            'graphql-ws': true,
           },
-          debug: true,
           sortSchema: true,
           autoTransformHttpErrors: true,
-        }
-      }
+        };
+      },
     }),
-  ]
+  ],
 })
 export class GraphQLConfigModule {}

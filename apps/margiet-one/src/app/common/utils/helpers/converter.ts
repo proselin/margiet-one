@@ -1,5 +1,5 @@
 import { ComicEntity } from '../../../entities';
-import { ComicModel } from '../../../models';
+import { ComicModel } from '../../../graphql';
 
 export class Converter {
   static convertComicEntityToComicModel(entity: ComicEntity): ComicModel {

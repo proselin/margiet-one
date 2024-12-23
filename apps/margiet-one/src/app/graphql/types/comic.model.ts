@@ -1,11 +1,12 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { ImageModel } from './image.model';
 import { ChapterModel } from './chapter.model';
+import { BaseEntityGqlModel } from '../../common';
 
 @ObjectType({
   description: 'Comic Model',
 })
-export class ComicModel {
+export class ComicModel extends BaseEntityGqlModel {
   @Field(() => String)
   title: string;
 

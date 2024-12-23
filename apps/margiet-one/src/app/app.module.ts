@@ -7,24 +7,25 @@ import {
   LoggerConfigModule,
 } from './config';
 
-import redisConfig from './config/redis.config';
 import { GraphQLConfigModule } from './config/graphql/graphql.config.module';
 import { LoggingInterceptor, TimeoutInterceptor } from './intercept';
 import { CsrfMiddleware } from './middlewares/double-csrf';
 import { DomainsModule } from './domains/domains.module';
 import databaseConfig from './config/database/database.config';
+import { CacheConfigModule } from './config/cache/cache.config.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       validate: envValidation,
-      load: [redisConfig, databaseConfig],
+      load: [databaseConfig],
     }),
     LoggerConfigModule,
     DatabaseConfigModule,
     DomainsModule,
     GraphQLConfigModule,
+    CacheConfigModule,
   ],
   providers: [TimeoutInterceptor, LoggingInterceptor, CsrfMiddleware],
 })

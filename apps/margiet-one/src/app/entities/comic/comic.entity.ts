@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 
 import { CommonEntity } from '../../common';
 import { ChapterEntity } from '../chapter';
@@ -65,5 +65,6 @@ export class ComicEntity extends CommonEntity {
   @OneToOne(() => ImageEntity, {
     lazy: true,
   })
+  @JoinColumn()
   thumbImage: MaybePromise<ImageEntity>;
 }

@@ -4,9 +4,14 @@ import { ComicPageableResponse } from './responses';
 import { ComicPageableInput } from './dtos/comic-pageable.input';
 import { Logger } from '@nestjs/common';
 import { GraphQLResolveInfo } from 'graphql';
+import { WithLogger } from '../../../common/decorators';
+import { ComicModel } from '../../../graphql';
 
-@Resolver()
+@Resolver(() => ComicModel)
+@WithLogger()
 export class ComicResolver {
+  private logger: Logger;
+
   constructor(private comicService: ComicService) {}
 
   @Query(() => ComicPageableResponse, {
@@ -21,10 +26,6 @@ export class ComicResolver {
     pageable: ComicPageableInput,
     @Info() info: GraphQLResolveInfo
   ): Promise<ComicPageableResponse> {
-    const queriedFields = info.fieldNodes[0].selectionSet.selections.map(
-      (selection: any) => selection.name.value
-    );
-    Logger.log(queriedFields); // Exa
     return this.comicService.getComics(pageable);
   }
 }
