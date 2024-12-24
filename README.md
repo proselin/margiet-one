@@ -8,7 +8,8 @@
 
 ## Run tasks
 
-To run the dev server for your app, use:
+### Projects margiet-one =BE=
+To run the dev server for app, use:
 
 ```sh
 npx nx serve margiet-one
@@ -26,6 +27,25 @@ To see all available targets to run for a project, run:
 npx nx show project margiet-one
 ```
 
+### Projects margiet-swarm =FE=
+To run the dev server for app, use:
+
+```sh
+npx nx serve margiet-swarm
+```
+
+To create a production bundle:
+
+```sh
+npx nx build margiet-swarm
+```
+
+To see all available targets to run for a project, run:
+
+```sh
+npx nx show project margiet-swarm
+```
+
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
 [More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
@@ -36,7 +56,8 @@ While you could add new projects to your workspace manually, you might want to l
 
 Use the plugin's generator to create new projects.
 
-To generate a new application, use:
+### nestjs
+To generate a new nest, use:
 
 ```sh
 npx nx g @nx/nest:app demo
@@ -45,7 +66,23 @@ npx nx g @nx/nest:app demo
 To generate a new library, use:
 
 ```sh
-npx nx g @nx/node:lib mylib
+npx nx g @nx/node:lib mylib 
+//or
+npx nx g @nx/nest:library demo
+```
+
+
+### angular
+To generate a new nest, use:
+
+```sh
+npx nx g @nx/angular:application demo
+```
+
+To generate a new library, use:
+
+```sh
+npx nx g @nx/angular:library mylib
 ```
 
 You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.

@@ -8,12 +8,16 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/margiet-swarm",
         "index": "apps/margiet-swarm/src/index.html",
         "main": "apps/margiet-swarm/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/margiet-swarm/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -22,7 +26,10 @@
             "input": "apps/margiet-swarm/public"
           }
         ],
-        "styles": ["apps/margiet-swarm/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/cyan-orange.css",
+          "apps/margiet-swarm/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -75,7 +82,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/margiet-swarm/jest.config.ts"
       }

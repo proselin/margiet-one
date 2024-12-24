@@ -1,0 +1,22 @@
+{
+  "name": "marget-minio",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/server/shared/margiet-minio/src",
+  "projectType": "library",
+  "tags": [
+    "type:library", "type:adapter", "scope:shared"
+  ],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/server/margiet-minio",
+        "tsConfig": "libs/shared/server/margiet-minio/tsconfig.lib.json",
+        "packageJson": "libs/shared/server/margiet-minio/package.json",
+        "main": "libs/shared/server/margiet-minio/src/index.ts",
+        "assets": ["libs/shared/server/margiet-minio/*.md"]
+      }
+    }
+  }
+}
