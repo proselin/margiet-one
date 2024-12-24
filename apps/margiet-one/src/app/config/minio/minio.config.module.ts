@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
-import { MargietMinioModule } from '@margiet-one/marget-minio';
-
 import { EnvName } from '../../common';
-
+import { MargietMinioModule } from '@mo/libs/shared/marget-minio';
 
 @Module({
   imports: [

@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/margiet-one/src",
   "projectType": "application",
-  "tags": ["type:shell",  "scope:shared"],
+  "tags": ["type:project",  "scope:global"],
   "targets": {
     "build": {
       "defaultConfiguration": "development",

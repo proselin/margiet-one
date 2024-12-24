@@ -1,0 +1,9 @@
+{
+  "name": "margiet-whale-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/margiet-whale-e2e/src",
+  "implicitDependencies": ["margiet-whale"],
+  "// targets": "to see all targets run: nx show project margiet-whale-e2e --web",
+  "targets": {}
+}

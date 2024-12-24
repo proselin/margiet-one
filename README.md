@@ -27,23 +27,23 @@ To see all available targets to run for a project, run:
 npx nx show project margiet-one
 ```
 
-### Projects margiet-swarm =FE=
+### Projects margiet-whale =FE=
 To run the dev server for app, use:
 
 ```sh
-npx nx serve margiet-swarm
+npx nx serve margiet-whale
 ```
 
 To create a production bundle:
 
 ```sh
-npx nx build margiet-swarm
+npx nx build margiet-whale
 ```
 
 To see all available targets to run for a project, run:
 
 ```sh
-npx nx show project margiet-swarm
+npx nx show project margiet-whale
 ```
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.

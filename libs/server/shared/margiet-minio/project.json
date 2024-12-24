@@ -4,7 +4,7 @@
   "sourceRoot": "libs/server/shared/margiet-minio/src",
   "projectType": "library",
   "tags": [
-    "type:library", "type:adapter", "scope:shared"
+    "type:library", "scope:shared"
   ],
   "targets": {
     "build": {

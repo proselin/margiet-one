@@ -15,7 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "@margiet-one/marget-minio": ["libs/shared/margiet-minio/src/index"]
+      "@mo/libs/shared/marget-minio": [
+        "libs/server/shared/margiet-minio/src/index.ts"
+      ],
+      "@mw/libs/shared/graphql": ["libs/web/shared/graphql/src/index.ts"],
+      "@mw/libs/shared/app-config": ["libs/web/shared/app-config/src/index.ts"],
+      "@mw/libs/shared/theme": ["libs/web/shared/theme/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
