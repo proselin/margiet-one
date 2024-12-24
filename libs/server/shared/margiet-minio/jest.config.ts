@@ -1,10 +1,10 @@
 export default {
   displayName: 'marget-minio',
-  preset: '../../../jest.preset.js',
+  preset: '../../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/libs/shared/margiet-minio',
+  coverageDirectory: '../../../../coverage/libs/shared/margiet-minio',
 };
